@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
 
 st.set_page_config(
-    page_title='The Indian Digital Revolution - Stock Analysis Dashboard',
+    page_title='AlphaPredict: Indian Digital Revolution Dashboard',
     page_icon='📈',
     layout='wide'
 )

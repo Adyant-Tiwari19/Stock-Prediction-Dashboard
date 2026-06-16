@@ -43,7 +43,6 @@ selected_stock_name = st.sidebar.selectbox('Select Stock' , list(stocks.keys()))
 selected_ticker = stocks[selected_stock_name]
 
 
-@st.cache_data
 def load_data(start ,end):
     df_tata = yf.download('TMPV.NS' , start=start , end=end)
     df_paytm = yf.download('PAYTM.NS' , start=start, end=end)

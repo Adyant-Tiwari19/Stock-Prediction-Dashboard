@@ -171,13 +171,16 @@ for name,df in stocks_dict.items():
     if name == 'Tata Motors EV 🚗':
         clean_close = clean_close[clean_close.index >= '2025-10-14']
 
-    norm = (clean_close/clean_close.iloc[0]) * 100
-    fig3.add_trace(go.Scatter(
-        x = clean_close.index,
-        y= norm.iloc[:,0],
-        mode='lines',
-        name = name
-    ))
+    if not clean_close.empty:
+        norm = (clean_close/clean_close.iloc[0]) * 100
+        fig3.add_trace(go.Scatter(
+            x = clean_close.index,
+            y= norm.iloc[:,0],
+            mode='lines',
+            name = name
+        ))
+    else:
+        st.warning(f"⚠️ No trading data available for {selected_stock_name} in this specific date range.")
 
 norm_nifty = (df_nifty['Close'] / df_nifty['Close'].iloc[0]) * 100
 fig3.add_trace(go.Scatter(

@@ -168,7 +168,10 @@ fig3 = go.Figure()
 for name,df in stocks_dict.items():
     clean_close = df['Close'].dropna()
     if name == 'Tata Motors EV 🚗':
-        clean_close = clean_close[clean_close.index >= '2025-10-14']
+        if end_date < pd.to_datetime('2025-10-14'):
+            clean_close = pd.Series(dtype='float64')
+        else:
+            clean_close = clean_close[clean_close.index >= '2025-10-14']
 
     if len(clean_close) > 0:
         norm = (clean_close/clean_close.iloc[0]) * 100
@@ -205,7 +208,10 @@ best_stocks = {}
 for name , df in stocks_dict.items():
     clean_close = df['Close'].dropna()
     if name == 'Tata Motors EV 🚗':
-        clean_close = clean_close[clean_close.index >= '2025-10-14']
+        if end_date < pd.to_datetime('2025-10-14'):
+            clean_close = pd.Series(dtype= 'float64')
+        else:
+            clean_close = clean_close[clean_close.index >= '2025-10-14']
     
     if len(clean_close) > 0:
         t_return = ((clean_close.iloc[-1] - clean_close.iloc[0])/clean_close.iloc[0]) * 100

@@ -180,7 +180,7 @@ for name,df in stocks_dict.items():
             name = name
         ))
     else:
-        st.warning(f"⚠️ No trading data available for {name} in this specific date range.")
+        st.warning(f"⚠️ No trading data available for {name} in this specific date range.({name} was listed on 14/10/2025)")
 
 norm_nifty = (df_nifty['Close'] / df_nifty['Close'].iloc[0]) * 100
 fig3.add_trace(go.Scatter(
@@ -214,7 +214,7 @@ for name , df in stocks_dict.items():
         performance_score = float(t_return.iloc[0]) / float(vol.iloc[0])
         best_stocks[name] = performance_score
     else:
-        st.warning(f"⚠️ No trading data available for {name} to calculate Leaderboard ranking.")
+        st.warning(f"⚠️ No trading data available for {name} to calculate Leaderboard ranking.({name} was listed on 14/10/2025)")
 
 sorted_stocks = sorted(best_stocks.items() , key=lambda x: x[1] , reverse=True)
 

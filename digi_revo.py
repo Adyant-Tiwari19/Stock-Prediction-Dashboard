@@ -208,10 +208,13 @@ for name , df in stocks_dict.items():
     if name == 'Tata Motors EV 🚗':
         clean_close = clean_close[clean_close.index >= '2025-10-14']
     
-    t_return = ((clean_close.iloc[-1] - clean_close.iloc[0])/clean_close.iloc[0]) * 100
-    vol = clean_close.pct_change().std() * 100
-    performance_score = float(t_return.iloc[0]) / float(vol.iloc[0])
-    best_stocks[name] = performance_score
+    if not clean_close.empty:
+        t_return = ((clean_close.iloc[-1] - clean_close.iloc[0])/clean_close.iloc[0]) * 100
+        vol = clean_close.pct_change().std() * 100
+        performance_score = float(t_return.iloc[0]) / float(vol.iloc[0])
+        best_stocks[name] = performance_score
+    else:
+        st.warning(f"⚠️ No trading data available for this specific date range. Please adjust the timeline in the sidebar.")
 
 sorted_stocks = sorted(best_stocks.items() , key=lambda x: x[1] , reverse=True)
 

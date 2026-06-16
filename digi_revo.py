@@ -168,7 +168,7 @@ fig3 = go.Figure()
 for name,df in stocks_dict.items():
     clean_close = df['Close'].dropna()
     if name == 'Tata Motors EV 🚗':
-        if end_date < pd.to_datetime('2025-10-14'):
+        if end_date < pd.Timestamp('2025-10-14').date():
             clean_close = pd.Series(dtype='float64')
         else:
             clean_close = clean_close[clean_close.index >= '2025-10-14']
@@ -208,7 +208,7 @@ best_stocks = {}
 for name , df in stocks_dict.items():
     clean_close = df['Close'].dropna()
     if name == 'Tata Motors EV 🚗':
-        if end_date < pd.to_datetime('2025-10-14'):
+        if end_date < pd.Timestamp('2025-10-14').date():
             clean_close = pd.Series(dtype= 'float64')
         else:
             clean_close = clean_close[clean_close.index >= '2025-10-14']

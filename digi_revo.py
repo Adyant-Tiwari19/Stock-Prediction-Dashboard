@@ -171,7 +171,7 @@ for name,df in stocks_dict.items():
     if name == 'Tata Motors EV 🚗':
         clean_close = clean_close[clean_close.index >= '2025-10-14']
 
-    if not clean_close.empty:
+    if len(clean_close) > 0:
         norm = (clean_close/clean_close.iloc[0]) * 100
         fig3.add_trace(go.Scatter(
             x = clean_close.index,
@@ -208,7 +208,7 @@ for name , df in stocks_dict.items():
     if name == 'Tata Motors EV 🚗':
         clean_close = clean_close[clean_close.index >= '2025-10-14']
     
-    if not clean_close.empty:
+    if len(clean_close) > 0:
         t_return = ((clean_close.iloc[-1] - clean_close.iloc[0])/clean_close.iloc[0]) * 100
         vol = clean_close.pct_change().std() * 100
         performance_score = float(t_return.iloc[0]) / float(vol.iloc[0])
